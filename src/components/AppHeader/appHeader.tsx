@@ -1,5 +1,6 @@
 "use client";
-import * as style from "./appHeader.styles";
+import { FaStar } from "react-icons/fa";
+import * as Style from "./appHeader.styles";
 
 type AppHeaderProps = {
   onSearch: (query: string) => void;
@@ -7,14 +8,16 @@ type AppHeaderProps = {
 
 export default function AppHeader({ onSearch }: AppHeaderProps) {
   return (
-    <style.HeaderContainer>
-      <style.Title>Bloom Books</style.Title>
-      <style.SearchInput
+    <Style.HeaderContainer>
+      <Style.Title>Bloom Books</Style.Title>
+      <Style.SearchInput
         type="text"
         placeholder="Buscar livros..."
         onChange={(e) => onSearch(e.target.value)}
       />
-      <h4>fav</h4>
-    </style.HeaderContainer>
+      <Style.StarWrapper>
+         <FaStar size={28} color="white" />
+      </Style.StarWrapper>
+    </Style.HeaderContainer>
   );
 }
