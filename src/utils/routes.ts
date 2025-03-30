@@ -1,0 +1,1 @@
+export const getGendersListRoute = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key'
