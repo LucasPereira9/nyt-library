@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 type ButtonProps = {
-  isDisabled: boolean;
+  isdisabled: boolean;
 };
 
 interface PageButtonProps {
-    isActive: boolean;
+    isactive: boolean;
   }
   
 
@@ -27,7 +27,7 @@ export const ButtonWrapper = styled.button<ButtonProps>`
   width: 2.4rem;
 
   ${(props) =>
-    props.isDisabled &&
+    props.isdisabled &&
     `
       background-color: #E0E0E0;
       border-color: #BDBDBD;
@@ -37,8 +37,8 @@ export const ButtonWrapper = styled.button<ButtonProps>`
 `;
 
 export const PageButton = styled.button<PageButtonProps>`
-  background-color: ${(props) => (props.isActive ? '#1F2445' : '#FFFFFF')};
-  color: ${(props) => (props.isActive ? '#FFFFFF' : '#1F2445')};
+  background-color: ${(props) => (props.isactive ? '#1F2445' : '#FFFFFF')};
+  color: ${(props) => (props.isactive ? '#FFFFFF' : '#1F2445')};
   cursor: pointer;
   border: 1px solid #1F2445;
   border-radius: 1rem;

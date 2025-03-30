@@ -3,11 +3,10 @@ import AppHeader from '@/components/AppHeader/appHeader';
 import * as Style from './page.styles';
 import FilterBar from '@/components/FilterBar/filterBar';
 import { useGendersListQuery } from '@/hooks/useGenderList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFilterStore } from '@/hooks/useFilterStore';
 import Pagination from '@/components/Pagination/pagination';
 import { usePaginatedResults, useTotalPages } from '@/utils/pagination';
-
 
 type GenderListProps = {
   list_name: string;
@@ -31,9 +30,21 @@ export default function Home() {
     setPage(newPage);
   };
 
- 
-  const paginatedResults = usePaginatedResults<GenderListProps>(data, page, itemsPerPage);
   const totalPages = useTotalPages(data, itemsPerPage);
+  const isPageOutOfRange = totalPages < page;
+
+    useEffect(() => {
+        if (isPageOutOfRange) {
+            setPage(1)
+        }
+    }, [isPageOutOfRange])
+
+  const paginatedResults = usePaginatedResults<GenderListProps>(
+    data,
+    page,
+    itemsPerPage,
+    isPageOutOfRange
+  );
 
   if (isLoading) return <p>Carregando...</p>;
 
@@ -51,7 +62,7 @@ export default function Home() {
           currentPage={page}
           totalPages={totalPages}
           onPageChange={handlePageChange}
-          />
+        />
       </Style.Content>
     </Style.Container>
   );

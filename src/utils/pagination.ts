@@ -3,14 +3,15 @@ import { useMemo } from 'react';
 export function usePaginatedResults<T>(
   data: { results?: T[] } | undefined,
   page: number,
-  itemsPerPage: number
+  itemsPerPage: number,
+  resetPages: boolean
 ): T[] {
   return useMemo(() => {
     if (!data || !data.results) return [];
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return data.results.slice(startIndex, endIndex);
-  }, [data, page, itemsPerPage]);
+  }, [data, page, itemsPerPage, resetPages]);
 }
 
 export function useTotalPages(

@@ -29,7 +29,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
   return (
     <Style.Container>
       <Style.ButtonWrapper
-        isDisabled={isLeftArrowDisabled}
+        isdisabled={isLeftArrowDisabled}
         onClick={handlePrevPage}
         disabled={isLeftArrowDisabled}
       >
@@ -39,7 +39,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
       {pageNumbers.map((pageNumber) => (
         <Style.PageButton
           key={pageNumber}
-          isActive={currentPage === pageNumber}
+          isactive={currentPage === pageNumber}
           onClick={() => handlePageClick(pageNumber)}
         >
           {pageNumber}
@@ -47,7 +47,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
       ))}
 
       <Style.ButtonWrapper
-        isDisabled={isRightArrowDisabled}
+        isdisabled={isRightArrowDisabled}
         onClick={handleNextPage}
         disabled={isRightArrowDisabled}
       >
