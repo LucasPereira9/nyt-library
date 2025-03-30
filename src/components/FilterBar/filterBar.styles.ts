@@ -46,3 +46,7 @@ export const IconsWrapper = styled.div`
         width: 3.2rem;
   }
 `
+
+export const FilterIcon = styled.div`
+    cursor: pointer;
+`

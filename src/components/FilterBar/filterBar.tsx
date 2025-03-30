@@ -4,11 +4,19 @@ import * as Style from "./filterBar.styles";
 import FilterSelect from "../FilterSelect/FilterSelect";
 import { useFilterStore } from "@/hooks/useFilterStore";
 
+const iconColors = {
+  active: "#5062F0",
+  inactive: "#D0D3E2",
+};
+
 export default function FilterBar() {
   const [isMobile, setIsMobile] = React.useState(false);
   const options = [5, 10, 15, 20];
 
-  const { layout, itemsPerPage, setItemsPerPage } = useFilterStore();
+
+  const { layout, itemsPerPage, setItemsPerPage, setLayout } = useFilterStore();
+
+  const isColumnLayout = layout === 'column'
 
   React.useEffect(() => {
     const checkScreenSize = () => {
@@ -28,8 +36,12 @@ export default function FilterBar() {
         <Style.FiltersWrapper>
         <FilterSelect isMobile={isMobile} value={itemsPerPage} options={options} onChange={setItemsPerPage} />
           <Style.IconsWrapper>
-            <FaList size={isMobile ? 20 : 24} color="#D0D3E2" />
-            <FaThLarge size={isMobile ? 20 : 24} color="#D0D3E2" />
+            <Style.FilterIcon onClick={() => setLayout('column')}>
+            <FaList size={isMobile ? 20 : 24} color={isColumnLayout ? iconColors.active : iconColors.inactive} />
+            </Style.FilterIcon>
+            <Style.FilterIcon onClick={() => setLayout('row')}>
+            <FaThLarge size={isMobile ? 20 : 24} color={!isColumnLayout ? iconColors.active : iconColors.inactive} />
+            </Style.FilterIcon>
           </Style.IconsWrapper>
         </Style.FiltersWrapper>
       </Style.Content>
