@@ -11,7 +11,7 @@ export const Content = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 81%;
+    width: 82%;
     @media (max-width: 768px) {
         width: 90%;
   }
@@ -27,9 +27,9 @@ export const Title = styled.h1`
 export const FiltersWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 15rem;
+    width: 16rem;
     @media (max-width: 768px) {
-        width: 8rem;
+        width: 9rem;
   }
 `
 export const FilterText = styled.h2`
