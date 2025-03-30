@@ -1,15 +1,14 @@
-"use client";
 import * as Style from "./appHeader.styles";
 import SideMenu from "../SideMenu/sideMenu";
 import SearchInput from "../SearchInput/searchInput";
-import { useState } from "react";
+import React from "react";
 
 type AppHeaderProps = {
   onSearch: (query: string) => void;
 };
 
 export default function AppHeader({ onSearch }: AppHeaderProps) {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = React.useState('');
   return (
     <Style.HeaderContainer>
       <Style.Title>Bloom Books</Style.Title>

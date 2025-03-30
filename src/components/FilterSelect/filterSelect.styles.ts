@@ -13,14 +13,16 @@ export const FilterText = styled.span`
 
 export const SelectWrapper = styled.div`
   display: flex;
-  padding-left: 0.4rem;
+  padding-left: 0.2rem;
 `;
 
 export const Select = styled.select`
-  border: none;
-  font-size: 1rem;
   appearance: none;
+  border: none;
   background-color: transparent;
+  display: flex;
+  font-size: 1rem;
+  text-align: center;
   cursor: pointer;
   &:focus {
     outline: none;

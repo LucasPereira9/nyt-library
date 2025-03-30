@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import AppHeader from '@/components/AppHeader/appHeader';
 import * as Style from './page.styles'
 import FilterBar from '@/components/FilterBar/filterBar';

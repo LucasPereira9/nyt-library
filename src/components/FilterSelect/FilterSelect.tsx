@@ -1,5 +1,6 @@
-import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import * as Style from './filterSelect.styles';
+import React from 'react';
 
 type FilterSelectProps = {
   isMobile: boolean;
@@ -10,9 +11,17 @@ type FilterSelectProps = {
 
 export default function FilterSelect({ isMobile, value, options, onChange }: FilterSelectProps) {
     function Dropdown({ value, options, onChange }: { value: number; options: number[]; onChange: (value: number) => void }) {
+      const [isOpen, setIsOpen] = React.useState(false)
     return (
         <Style.SelectWrapper>
-        <Style.Select value={value} onChange={(e) => onChange(Number(e.target.value))}>
+        <Style.Select
+        onFocus={() => {
+          setIsOpen(true);
+        }}
+        onBlur={() => {
+          setIsOpen(false);
+        }}
+         value={value} onChange={(e) => onChange(Number(e.target.value))}>
             {options.map((option) => (
             <option key={option} value={option}>
                 {option}
@@ -20,7 +29,7 @@ export default function FilterSelect({ isMobile, value, options, onChange }: Fil
             ))}
         </Style.Select>
         <Style.IconWrapper>
-            <FaChevronDown size={14} color="#666" />
+          {isOpen ? <FaChevronUp size={14} color="#666" /> : <FaChevronDown size={14} color="#666" /> }
         </Style.IconWrapper>
         </Style.SelectWrapper>
     );

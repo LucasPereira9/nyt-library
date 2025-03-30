@@ -1,16 +1,16 @@
-import { ReactNode, useEffect, useState } from 'react';
+import React from 'react';
 import * as Style from './sideMenu.styles';
 import { FaStar } from 'react-icons/fa';
 
 
 export default function SideMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
