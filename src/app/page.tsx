@@ -3,9 +3,10 @@ import AppHeader from '@/components/AppHeader/appHeader';
 import * as Style from './page.styles';
 import FilterBar from '@/components/FilterBar/filterBar';
 import { useGendersListQuery } from '@/hooks/useGenderList';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useFilterStore } from '@/hooks/useFilterStore';
 import Pagination from '@/components/Pagination/pagination';
+import { usePaginatedResults, useTotalPages } from '@/utils/pagination';
 
 
 type GenderListProps = {
@@ -18,7 +19,7 @@ type GenderListProps = {
 };
 
 export default function Home() {
-  const { data, isLoading, isError, error } = useGendersListQuery();
+  const { data, isLoading } = useGendersListQuery();
   const [page, setPage] = useState(1);
   const { itemsPerPage } = useFilterStore();
 
@@ -30,17 +31,9 @@ export default function Home() {
     setPage(newPage);
   };
 
-  const paginatedResults = useMemo(() => {
-    if (!data || !data.results) return [];
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return data.results.slice(startIndex, endIndex);
-  }, [data, page, itemsPerPage]);
-
-  const totalPages = useMemo(() => {
-    if (!data || !data.results) return 0;
-    return Math.ceil(data.results.length / itemsPerPage);
-  }, [data, itemsPerPage]);
+ 
+  const paginatedResults = usePaginatedResults<GenderListProps>(data, page, itemsPerPage);
+  const totalPages = useTotalPages(data, itemsPerPage);
 
   if (isLoading) return <p>Carregando...</p>;
 
@@ -48,16 +41,18 @@ export default function Home() {
     <Style.Container>
       <AppHeader onSearch={handleSearch} />
       <FilterBar />
-      <div>
-        {paginatedResults.map((item: GenderListProps) => (
-          <div key={item.list_name}>{item.display_name}</div>
-        ))}
-      </div>
-      <Pagination
-        currentPage={page}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <Style.Content>
+        <div>
+          {paginatedResults.map((item: GenderListProps) => (
+            <div key={item.list_name}>{item.display_name}</div>
+          ))}
+        </div>
+        <Pagination
+          currentPage={page}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          />
+      </Style.Content>
     </Style.Container>
   );
 }
