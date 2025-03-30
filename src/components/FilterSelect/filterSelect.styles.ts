@@ -12,15 +12,12 @@ export const FilterText = styled.span`
 `;
 
 export const SelectWrapper = styled.div`
-  position: relative;
   display: flex;
-  align-items: center;
+  padding-left: 0.4rem;
 `;
 
 export const Select = styled.select`
   border: none;
-  border-radius: 0.4rem;
-  padding: 4px 22px 4px 8px;
   font-size: 1rem;
   appearance: none;
   background-color: transparent;
@@ -32,9 +29,5 @@ export const Select = styled.select`
 `;
 
 export const IconWrapper = styled.div`
-  position: absolute;
-  right: 8px;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
+margin-right: 0.6rem;
 `;

@@ -36,7 +36,6 @@ export default function FilterSelect({ isMobile, value, options, onChange }: Fil
       <Style.FilterText>
         {!isMobile && "por vez"}
       </Style.FilterText>
-     
     </Style.Wrapper>
   );
 }

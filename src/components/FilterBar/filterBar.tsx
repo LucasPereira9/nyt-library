@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { FaThLarge, FaList } from "react-icons/fa";
 import * as Style from "./filterBar.styles";
 import FilterSelect from "../FilterSelect/FilterSelect";
+import { useFilterStore } from "@/hooks/useFilterStore";
 
 export default function FilterBar() {
   const [isMobile, setIsMobile] = useState(false);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
   const options = [5, 10, 15, 20];
+
+  const { layout, itemsPerPage, setItemsPerPage } = useFilterStore();
 
   useEffect(() => {
     const checkScreenSize = () => {

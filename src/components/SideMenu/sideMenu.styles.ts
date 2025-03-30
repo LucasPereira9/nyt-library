@@ -78,7 +78,7 @@ export const StarWrapper = styled.div<MenuContainerProps>`
   }
   @media (max-width: 1024px) {
     height: 12%;
-    width: 5.3rem;
+    width: 5rem;
   }
 
   @media (max-width: 768px) {
