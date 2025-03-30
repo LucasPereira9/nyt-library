@@ -1,24 +1,12 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface MenuContainerProps {
-    isopen: boolean | undefined;
-  }
-
+  isopen: boolean;
+}
 export const Wrapper = styled.div`
   z-index: 100;
 `;
 
-export const TriggerContent = styled.div<MenuContainerProps>`
-  height: 100%;
-  background-color: black;
-  transition: color 2s ease;
-
-  ${({ isopen }) =>
-    isopen &&
-    css`
-      background-color: green;
-    `}
-`;
 export const MenuContainer = styled.div<MenuContainerProps>`
   position: fixed;
   bottom: 0;
@@ -66,3 +54,38 @@ export const Overlay = styled.div<MenuContainerProps>`
     height: 92%;
   }
 `;
+
+export const StarWrapper = styled.div<MenuContainerProps>`
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  height: 10%;
+  width: 6.4rem;
+  transition: background-color 1.4s ease, transform 0.3s ease;
+
+  ${({ isopen }) =>
+    isopen &&
+    css`
+      background-color: #0B1A8E;
+    `}
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  @media (max-width: 1024px) {
+    height: 12%;
+    width: 5.3rem;
+  }
+
+  @media (max-width: 768px) {
+    height: 9%;
+    position: absolute;
+    right: 0;
+    width: 4rem;
+  }
+`;
+

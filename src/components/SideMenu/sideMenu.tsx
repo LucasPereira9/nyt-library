@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
-import * as S from './sideMenu.styles';
+import { ReactNode, useEffect, useState } from 'react';
+import * as Style from './sideMenu.styles';
 import { FaStar } from 'react-icons/fa';
+
 
 export default function SideMenu() {
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -21,16 +23,15 @@ export default function SideMenu() {
   }, [isOpen]);
 
   return (
-    <S.Wrapper>
-        <S.TriggerContent isopen={isOpen} onClick={toggleMenu}>
-            <FaStar size={28} color="white" />
-        </S.TriggerContent>
-      <S.Overlay isopen={isOpen ? true : undefined} onClick={toggleMenu} />
-
-      <S.MenuContainer isopen={isOpen ? true : undefined}>
-         <h3>content</h3>
-         <h1>asdsaidsidsanid</h1>
-      </S.MenuContainer>
-    </S.Wrapper>
+    <Style.Wrapper>
+         <Style.StarWrapper onClick={toggleMenu} isopen={isOpen}>
+                <FaStar size={28} color="white" />
+         </Style.StarWrapper>
+      <Style.Overlay isopen={isOpen} onClick={toggleMenu} />
+      <Style.MenuContainer isopen={isOpen}>
+        <h3>content</h3>
+        <h1>asdsaidsidsanid</h1>
+      </Style.MenuContainer>
+    </Style.Wrapper>
   );
 }

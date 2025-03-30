@@ -15,9 +15,7 @@ export default function AppHeader({ onSearch }: AppHeaderProps) {
         placeholder="Buscar livros..."
         onChange={(e) => onSearch(e.target.value)}
       />
-      <Style.StarWrapper>
         <SideMenu />
-      </Style.StarWrapper>
     </Style.HeaderContainer>
   );
 }

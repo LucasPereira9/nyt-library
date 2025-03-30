@@ -35,14 +35,3 @@ export const SearchInput = styled.input`
     margin-top: 1rem;
   }
 `;
-
-export const StarWrapper = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  @media (max-width: 768px) {
-    position: absolute;
-    right: 0;
-    margin: 0 1.6rem 2.9rem 0;
-  }
-`;
