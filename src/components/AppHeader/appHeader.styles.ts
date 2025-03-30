@@ -23,15 +23,3 @@ export const Title = styled.h1`
     font-size: 2.4rem;
   }
 `;
-
-export const SearchInput = styled.input`
-  border-radius: 4px;
-  border: none;
-  padding: 8px;
-  width: 30%;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-top: 1rem;
-  }
-`;
