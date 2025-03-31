@@ -10,11 +10,11 @@ type GenderListProps = {
   updated: string;
 };
 
-interface GenderListRowProps {
+interface GenderListRopsList {
   items: GenderListProps[];
 }
 
-const GenderListRow = ({ items }: GenderListRowProps) => {
+const GenderRowList = ({ items }: GenderListRopsList) => {
   return (
     <S.GendersWrapper>
       {items.map((item) => (
@@ -33,4 +33,4 @@ const GenderListRow = ({ items }: GenderListRowProps) => {
   );
 };
 
-export default GenderListRow;
+export default GenderRowList;

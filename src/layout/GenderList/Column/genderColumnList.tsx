@@ -10,11 +10,11 @@ type GenderListProps = {
   updated: string;
 };
 
-interface GenderListColumnProps {
+interface GenderColumnPropsList {
   items: GenderListProps[];
 }
 
-const GenderListColumn = ({ items }: GenderListColumnProps) => {
+const GenderColumnList = ({ items }: GenderColumnPropsList) => {
   return (
     <S.GendersWrapper>
       {items.map((item) => (
@@ -33,4 +33,4 @@ const GenderListColumn = ({ items }: GenderListColumnProps) => {
   );
 };
 
-export default GenderListColumn;
+export default GenderColumnList;

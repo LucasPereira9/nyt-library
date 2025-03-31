@@ -7,9 +7,9 @@ import { useState, useEffect } from 'react';
 import { useFilterStore } from '@/hooks/useFilterStore';
 import Pagination from '@/components/Pagination/pagination';
 import { usePaginatedResults, useTotalPages } from '@/utils/pagination';
-import GenderListColumn from '@/layout/GenderList/Column/genderColumnList';
+import GenderColumnList from '@/layout/GenderList/Column/genderColumnList';
 import mockGenderList from '@/utils/mock';
-import GenderListRow from '@/layout/GenderList/Row/genderRowList';
+import GenderRowList from '@/layout/GenderList/Row/genderRowList';
 
 type GenderListProps = {
   list_name: string;
@@ -53,18 +53,15 @@ export default function Home() {
 
   if (isLoading) return <p>Carregando...</p>;
 
-  console.log(paginatedResults)
-
   return (
     <Style.Container>
       <AppHeader onSearch={handleSearch} />
       <FilterBar />
       <Style.Content>
         {isColumn ? 
-        <GenderListColumn items={paginatedResults} /> :
-        <GenderListRow items={paginatedResults}  />
+        <GenderColumnList items={paginatedResults} /> :
+        <GenderRowList items={paginatedResults}  />
       }
-
         <Pagination
           currentPage={page}
           totalPages={totalPages}
