@@ -27,7 +27,7 @@ export const GenderItem = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 9rem
   }
 `;
 
@@ -44,8 +44,6 @@ export const GenderTitle = styled.h1`
   font-weight: 400;
   font-size: 2rem;
   line-height: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
   text-decoration: underline;
   text-decoration-color: #5062F0;
   text-decoration-thickness: 2px;
