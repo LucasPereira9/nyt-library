@@ -9,10 +9,12 @@ interface PageButtonProps {
   }
   
 
-export const Container = styled.div`
+  export const Container = styled.div`
   display: flex;
   gap: 0.7rem;
   margin-top: 2.4rem;
+  flex-wrap: wrap;
+  max-width: 100%;
 `;
 
 export const ButtonWrapper = styled.button<ButtonProps>`
