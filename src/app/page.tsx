@@ -17,6 +17,21 @@ type GenderListProps = {
   updated: string;
 };
 
+const RenderGenderItems = ({ items }: { items: GenderListProps[] }) => {
+  return items.map((item: GenderListProps) => (
+    <Style.GenderItem key={item.list_name}>
+      <Style.TitleWrapper>
+        <Style.GenderTitle>{item.display_name}</Style.GenderTitle>
+        <Style.UpdatedText>Atualizada em: {item.updated}</Style.UpdatedText>
+      </Style.TitleWrapper>
+      <Style.DatesWrapper>
+        <Style.DatesText>Última publicação: {item.newest_published_date}</Style.DatesText>
+        <Style.DatesText>Publicação mais antiga: {item.oldest_published_date}</Style.DatesText>
+      </Style.DatesWrapper>
+    </Style.GenderItem>
+  ));
+};
+
 export default function Home() {
   const { data, isLoading } = useGendersListQuery();
   const [page, setPage] = useState(1);
@@ -33,11 +48,11 @@ export default function Home() {
   const totalPages = useTotalPages(data, itemsPerPage);
   const isPageOutOfRange = totalPages < page;
 
-    useEffect(() => {
-        if (isPageOutOfRange) {
-            setPage(1)
-        }
-    }, [isPageOutOfRange])
+  useEffect(() => {
+    if (isPageOutOfRange) {
+      setPage(1);
+    }
+  }, [isPageOutOfRange, data]);
 
   const paginatedResults = usePaginatedResults<GenderListProps>(
     data,
@@ -53,11 +68,9 @@ export default function Home() {
       <AppHeader onSearch={handleSearch} />
       <FilterBar />
       <Style.Content>
-        <div>
-          {paginatedResults.map((item: GenderListProps) => (
-            <div key={item.list_name}>{item.display_name}</div>
-          ))}
-        </div>
+        <Style.GendersWrapper>
+          <RenderGenderItems items={paginatedResults} />
+        </Style.GendersWrapper>
         <Pagination
           currentPage={page}
           totalPages={totalPages}
