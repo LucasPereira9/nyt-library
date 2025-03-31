@@ -1,5 +1,5 @@
 import { formatDateBasedOnFrequency, formatShortDate } from '@/utils/dates';
-import * as S from './genderList.styles'
+import * as S from './genderColumnList.styles'
 
 type GenderListProps = {
   list_name: string;

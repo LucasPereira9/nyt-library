@@ -7,7 +7,9 @@ import { useState, useEffect } from 'react';
 import { useFilterStore } from '@/hooks/useFilterStore';
 import Pagination from '@/components/Pagination/pagination';
 import { usePaginatedResults, useTotalPages } from '@/utils/pagination';
-import GenderListColumn from '@/layout/GenderList/genderColumnList';
+import GenderListColumn from '@/layout/GenderList/Column/genderColumnList';
+import mockGenderList from '@/utils/mock';
+import GenderListRow from '@/layout/GenderList/Row/genderRowList';
 
 type GenderListProps = {
   list_name: string;
@@ -21,7 +23,9 @@ type GenderListProps = {
 export default function Home() {
   const { data, isLoading } = useGendersListQuery();
   const [page, setPage] = useState(1);
-  const { itemsPerPage } = useFilterStore();
+  const { itemsPerPage, layout } = useFilterStore();
+
+  const isColumn = layout === 'column'
 
   const handleSearch = (query: string) => {
     console.log('Buscando por:', query);
@@ -31,17 +35,17 @@ export default function Home() {
     setPage(newPage);
   };
 
-  const totalPages = useTotalPages(data, itemsPerPage);
+  const totalPages = useTotalPages(mockGenderList, itemsPerPage);
   const isPageOutOfRange = totalPages < page;
 
   useEffect(() => {
     if (isPageOutOfRange) {
       setPage(1);
     }
-  }, [isPageOutOfRange, data]);
+  }, [isPageOutOfRange, mockGenderList]);
 
   const paginatedResults = usePaginatedResults<GenderListProps>(
-    data,
+    mockGenderList, // TODO REMOVER MOCK
     page,
     itemsPerPage,
     isPageOutOfRange
@@ -56,7 +60,11 @@ export default function Home() {
       <AppHeader onSearch={handleSearch} />
       <FilterBar />
       <Style.Content>
-          <GenderListColumn items={paginatedResults} />
+        {isColumn ? 
+        <GenderListColumn items={paginatedResults} /> :
+        <GenderListRow items={paginatedResults}  />
+      }
+
         <Pagination
           currentPage={page}
           totalPages={totalPages}

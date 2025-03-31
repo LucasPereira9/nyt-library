@@ -11,6 +11,7 @@ interface PageButtonProps {
 
   export const Container = styled.div`
   display: flex;
+  justify-content: center;
   gap: 0.7rem;
   margin-top: 2.4rem;
   flex-wrap: wrap;
