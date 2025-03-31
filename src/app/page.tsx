@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useFilterStore } from '@/hooks/useFilterStore';
 import Pagination from '@/components/Pagination/pagination';
 import { usePaginatedResults, useTotalPages } from '@/utils/pagination';
-import { formatDateBasedOnFrequency, formatShortDate } from '@/utils/dates';
+import GenderListColumn from '@/layout/GenderList/genderColumnList';
 
 type GenderListProps = {
   list_name: string;
@@ -16,21 +16,6 @@ type GenderListProps = {
   oldest_published_date: string;
   newest_published_date: string;
   updated: string;
-};
-
-const RenderGenderItems = ({ items }: { items: GenderListProps[] }) => {
-  return items.map((item: GenderListProps) => (
-    <Style.GenderItem key={item.list_name}>
-      <Style.TitleWrapper>
-        <Style.GenderTitle>{item.display_name}</Style.GenderTitle>
-        <Style.UpdatedText>Atualizada em: {formatDateBasedOnFrequency(item.updated)}</Style.UpdatedText>
-      </Style.TitleWrapper>
-      <Style.DatesWrapper>
-        <Style.DatesText>Última publicação: {formatShortDate(item.newest_published_date)}</Style.DatesText>
-        <Style.DatesText>Publicação mais antiga: {formatShortDate(item.oldest_published_date)}</Style.DatesText>
-      </Style.DatesWrapper>
-    </Style.GenderItem>
-  ));
 };
 
 export default function Home() {
@@ -64,14 +49,14 @@ export default function Home() {
 
   if (isLoading) return <p>Carregando...</p>;
 
+  console.log(paginatedResults)
+
   return (
     <Style.Container>
       <AppHeader onSearch={handleSearch} />
       <FilterBar />
       <Style.Content>
-        <Style.GendersWrapper>
-          <RenderGenderItems items={paginatedResults} />
-        </Style.GendersWrapper>
+          <GenderListColumn items={paginatedResults} />
         <Pagination
           currentPage={page}
           totalPages={totalPages}

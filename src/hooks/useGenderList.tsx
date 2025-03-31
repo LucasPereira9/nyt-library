@@ -1,7 +1,7 @@
 import { getGendersListRoute } from '@/utils/routes';
 import { useQuery } from '@tanstack/react-query';
 
-const API_KEY = 'BTpXkSzcuywnVvo0jlj8xypWh7CvSFpe';
+const API_KEY = 'suojs22wMAu1rnsxc8ffQX9hll4K8ZY5';
 
  const getGendersList = async () => {
   try {
