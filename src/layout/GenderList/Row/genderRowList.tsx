@@ -1,5 +1,6 @@
 import { formatDateBasedOnFrequency, formatShortDate } from '@/utils/dates';
 import * as S from './genderRow.styles'
+import { useRouter } from 'next/navigation';
 
 type GenderListProps = {
   list_name: string;
@@ -15,10 +16,16 @@ interface GenderListRopsList {
 }
 
 const GenderRowList = ({ items }: GenderListRopsList) => {
+  const router = useRouter()
+
+  const handleGenderClick = (gender: string) => {
+    router.push(`/books?gender=${gender}`);
+  };
+
   return (
     <S.GendersWrapper>
       {items.map((item) => (
-        <S.GenderItem key={item.list_name}>
+        <S.GenderItem onClick={() => handleGenderClick(item.list_name)} key={item.list_name}>
           <S.TitleWrapper>
             <S.GenderTitle>{item.display_name}</S.GenderTitle>
             <S.UpdatedText>Atualizada em: {formatDateBasedOnFrequency(item.updated)}</S.UpdatedText>
