@@ -11,14 +11,20 @@ export const Content = styled.div`
 `
 
 export const GendersWrapper = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: auto;
-    max-height: 40rem;
-    width: 100%;
-`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 40rem;
+  width: 100%;
+  transform: translate(0);
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    max-height: 34rem;
+  }
+`;
 
 export const GenderItem = styled.div`
     align-items: center;
@@ -27,29 +33,51 @@ export const GenderItem = styled.div`
     margin-bottom: 3.2rem;
     padding-top: 2rem;
     width: 82%;
+
+    @media (max-width: 768px) {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 2.6rem;
+        width: 92%;
+  }
 `
 
 export const TitleWrapper = styled.div`
     align-items: flex-end;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0.8rem 0;
+        margin-top: 0.4rem;
+  }
 `
 export const DatesWrapper = styled.div`
     align-items: flex-end;
     display: flex;
     justify-content: space-between;
     width: 40rem;
+    @media (max-width: 768px) {
+        align-items: flex-start;
+        flex-direction: column;
+  }
 `
-
 export const GenderTitle = styled.h1`
   font-weight: 400;
   font-size: 2rem;
   line-height: 100%;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 37rem;
   margin-right: 1.2rem;
+  @media (max-width: 768px) {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: visible;
+    text-overflow: clip;
+    max-width: 100%;
+  }
 `;
 
 export const UpdatedText = styled.h2`
