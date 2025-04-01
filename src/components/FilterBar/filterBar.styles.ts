@@ -17,13 +17,16 @@ export const Content = styled.div`
   }
 `
 export const Title = styled.h1`
-    font-weight: 700;
-    font-size: 2.4rem;
-    line-height: 100%;
-    @media (max-width: 768px) {
-        font-size: 1.8rem;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
   }
-`
+`;
 export const FiltersWrapper = styled.div`
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,7 @@
+import Button from '@/components/Button/Button';
 import * as S from './bookColumnList.styles';
-import { FaStar, FaRegStar  } from 'react-icons/fa';
+import { FaStar, FaRegStar } from 'react-icons/fa';
+import { formatToBrl } from '@/utils/formatters';
 
 export type BookDetails = {
   title: string;
@@ -35,6 +37,11 @@ interface BookColumnPropsList {
 }
 
 export default function BookColumnList({ items }: BookColumnPropsList) {
+
+  const handleButtonClick = (url: string) => {
+    window.open(url ?? '', '_blank');
+  };
+
   return (
     <S.BooksWrapper>
       {items?.map((bookList, index) => (
@@ -47,12 +54,17 @@ export default function BookColumnList({ items }: BookColumnPropsList) {
               <S.InfoContainer>
                 <S.TitleContainer>
                   <S.Title>{item.title}</S.Title>
+                  <S.AuthorContainer>
                   <S.Author>{item.author}</S.Author>
                   <FaRegStar size={16} />
+                  </S.AuthorContainer>
                 </S.TitleContainer>
-              <S.Description>{item.description}</S.Description>
-              <S.Text>{item.publisher}</S.Text>
-              <S.Text>Rank</S.Text>
+                <S.Description>{item.description}</S.Description>
+                <S.Text>{item.publisher}</S.Text>
+                <S.Text>Rank {bookList.rank}</S.Text>
+                <Button onClick={() => handleButtonClick(bookList.amazon_product_url)}>
+                  Compre por {formatToBrl(item.price)}
+                </Button>
               </S.InfoContainer>
             </S.BookItem>
           ))}

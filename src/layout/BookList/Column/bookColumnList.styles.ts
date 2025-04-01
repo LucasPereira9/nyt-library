@@ -24,11 +24,6 @@ export const BookContent = styled.div`
   margin-bottom: 3.2rem;
   padding-top: 2rem;
   width: 82%;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
 
   @media (max-width: 768px) {
     align-items: flex-start;
@@ -41,6 +36,11 @@ export const BookContent = styled.div`
 export const BookItem = styled.div`
   display: flex;
   height: 16.7rem;
+  
+  @media (max-width: 768px) {
+    height: 100%;
+    width: 100%;
+  }
 `
 
 export const ImageContainer = styled.div`
@@ -61,12 +61,26 @@ export const InfoContainer =  styled.div`
   flex-direction: column;
   justify-content: space-around;
   width: 80%;
+  @media (max-width: 768px) {
+    margin-left: 1rem;
+    gap: 1rem;
+  }
 `
 
 export const TitleContainer = styled.div`
   align-items: center;
   display: flex;
   gap: 0.4rem;
+    
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+`
+export const AuthorContainer = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 0.2rem;
 `
 export const Title = styled.h1`
   color: #0E1337;
@@ -84,7 +98,6 @@ export const Description = styled.p`
   color: #0E1337;
   font-weight: 400;
   font-size: 1.4rem;
-  margin-top: 0.5rem;
   line-height: 100%;
 `
 
