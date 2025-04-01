@@ -28,7 +28,7 @@ export const useBestSellersListQuery = (list: string) => {
   return useQuery({
     queryKey: ['best-sellers-list', list],
     queryFn: () => getBestSellersList({ list }),
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 60, // TODO retornar para 15 min
     retry: false,
     enabled: !!list,
   });

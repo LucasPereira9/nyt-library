@@ -17,7 +17,7 @@ export const BooksWrapper = styled.div`
 `;
 
 
-export const BookItem = styled.div`
+export const BookContent = styled.div`
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -36,5 +36,22 @@ export const BookItem = styled.div`
     flex-direction: column;
     margin-bottom: 2.6rem;
     width: 92%;
+  }
+`;
+
+export const BookItem = styled.div`
+  display: flex;
+`
+
+export const ImageContainer = styled.div`
+  height: 100%;
+  width: 16.7rem;
+  overflow: hidden;
+  border-radius: 8px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;
