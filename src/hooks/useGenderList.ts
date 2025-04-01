@@ -1,20 +1,19 @@
 import { getGendersListRoute } from '@/utils/routes';
 import { useQuery } from '@tanstack/react-query';
 
-const API_KEY = 'suojs22wMAu1rnsxc8ffQX9hll4K8ZY5';
+const API_KEY = 'DKBMAoUNFL6CTrzuGk4bIaZ2Cy02T8Wb';
 
  const getGendersList = async () => {
   try {
-  //   const response = await fetch(
-  //     `${getGendersListRoute}=${API_KEY}`
-  //   );
+    const response = await fetch(
+      `${getGendersListRoute}=${API_KEY}`
+    );
 
-  //   if (!response.ok) {
-  //     throw new Error(`Erro ${response.status}: ${response.statusText}`);
-  //   }
-  //   const data = await response.json();
-  const data = {}
-
+    if (!response.ok) {
+      throw new Error(`Erro ${response.status}: ${response.statusText}`);
+    }
+  
+    const data = await response.json();
     return data;
   } catch (error) {
     console.error('Erro ao buscar os nomes das listas:', error);

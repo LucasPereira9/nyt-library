@@ -25,7 +25,7 @@ const GenderRowList = ({ items }: GenderListRopsList) => {
   return (
     <S.GendersWrapper>
       {items.map((item) => (
-        <S.GenderItem onClick={() => handleGenderClick(item.list_name)} key={item.list_name}>
+        <S.GenderItem onClick={() => handleGenderClick(item.list_name_encoded)} key={item.list_name}>
           <S.TitleWrapper>
             <S.GenderTitle>{item.display_name}</S.GenderTitle>
             <S.UpdatedText>Atualizada em: {formatDateBasedOnFrequency(item.updated)}</S.UpdatedText>

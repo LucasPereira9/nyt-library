@@ -9,7 +9,7 @@ const iconColors = {
   inactive: "#D0D3E2",
 };
 
-export default function FilterBar() {
+export default function FilterBar({Title}: {Title: string}) {
   const [isMobile, setIsMobile] = React.useState(false);
   const options = [5, 10, 15, 20];
 
@@ -32,7 +32,7 @@ export default function FilterBar() {
   return (
     <Style.Container>
       <Style.Content>
-        <Style.Title>Gêneros</Style.Title>
+        <Style.Title>{Title}</Style.Title>
         <Style.FiltersWrapper>
         <FilterSelect isMobile={isMobile} value={itemsPerPage} options={options} onChange={setItemsPerPage} />
           <Style.IconsWrapper>

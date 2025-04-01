@@ -8,7 +8,6 @@ import { useFilterStore } from '@/hooks/useFilterStore';
 import Pagination from '@/components/Pagination/pagination';
 import { usePaginatedResults, useTotalPages } from '@/utils/pagination';
 import GenderColumnList from '@/layout/GenderList/Column/genderColumnList';
-import mockGenderList from '@/utils/mock';
 import GenderRowList from '@/layout/GenderList/Row/genderRowList';
 
 type GenderListProps = {
@@ -35,17 +34,17 @@ export default function Home() {
     setPage(newPage);
   };
 
-  const totalPages = useTotalPages(mockGenderList, itemsPerPage);
+  const totalPages = useTotalPages(data, itemsPerPage);
   const isPageOutOfRange = totalPages < page;
 
   useEffect(() => {
     if (isPageOutOfRange) {
       setPage(1);
     }
-  }, [isPageOutOfRange, mockGenderList]);
+  }, [isPageOutOfRange, data]);
 
   const paginatedResults = usePaginatedResults<GenderListProps>(
-    mockGenderList, // TODO REMOVER MOCK
+    data,
     page,
     itemsPerPage,
     isPageOutOfRange
@@ -56,7 +55,7 @@ export default function Home() {
   return (
     <Style.Container>
       <AppHeader onSearch={handleSearch} />
-      <FilterBar />
+      <FilterBar Title='Gêneros' />
       <Style.Content>
         {isColumn ? 
         <GenderColumnList items={paginatedResults} /> :
