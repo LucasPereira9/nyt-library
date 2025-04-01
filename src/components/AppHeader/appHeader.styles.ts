@@ -16,9 +16,16 @@ export const HeaderContainer = styled.header`
 
 export const Title = styled.h1`
   color: #FFFFFF;
+  cursor: pointer;
   font-weight: 700;
   font-size: 3.2rem;
   line-height: 100%;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+
   @media (max-width: 768px) {
     font-size: 2.4rem;
   }
