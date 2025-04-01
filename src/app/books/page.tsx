@@ -6,6 +6,7 @@ import Pagination from "@/components/Pagination/pagination";
 import { useBestSellersListQuery } from "@/hooks/useBooksList";
 import { useFilterStore } from "@/hooks/useFilterStore";
 import BookColumnList, { BookListProps } from "@/layout/BookList/Column/bookColumnList";
+import BookRowList from "@/layout/BookList/Row/bookRowList";
 import { useTotalPages, usePaginatedResults } from "@/utils/pagination";
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -15,7 +16,9 @@ export default function Books() {
   const gender = searchParams.get('gender');
   const [page, setPage] = useState(1);
   const { data, isLoading } = useBestSellersListQuery(gender ?? '');
-  const { itemsPerPage } = useFilterStore();
+  const { itemsPerPage, layout } = useFilterStore();
+
+  const isColumn = layout === 'column'
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
@@ -51,7 +54,10 @@ export default function Books() {
     <div>
       <AppHeader onSearch={handleSearch} />
       <FilterBar Title={data?.results[0]?.list_name} />
-      <BookColumnList items={paginatedResults} />
+      {isColumn ?
+      <BookColumnList items={paginatedResults} /> :
+      <BookRowList items={paginatedResults} />  
+    }
       <Pagination
           currentPage={page}
           totalPages={totalPages}
