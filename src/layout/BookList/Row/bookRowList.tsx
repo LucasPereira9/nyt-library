@@ -2,6 +2,7 @@ import Button from '@/components/Button/Button';
 import * as S from './bookRowList.styles';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 import { formatToBrl } from '@/utils/formatters';
+import { useFavoritesStore } from '@/hooks/useFavoritesStore';
 
 export type BookDetails = {
   title: string;
@@ -38,6 +39,17 @@ interface BookRowPropsList {
 
 export default function BookRowList({ items }: BookRowPropsList) {
 
+  const { addFavoriteBook, removeFavoriteBook, isFavorite } = useFavoritesStore();
+
+  const handleFavoriteClick = (book: BookDetails) => {
+    if (isFavorite(book.primary_isbn13)) {
+      removeFavoriteBook(book.primary_isbn13);
+    } else {
+      addFavoriteBook(book);
+    }
+  };
+
+
   const handleButtonClick = (url: string) => {
     window.open(url ?? '', '_blank');
   };
@@ -56,7 +68,11 @@ export default function BookRowList({ items }: BookRowPropsList) {
                   <S.Title>{item.title}</S.Title>
                   <S.AuthorContainer>
                   <S.Author>{item.author}</S.Author>
-                  <FaRegStar size={16} />
+                  {isFavorite(item.primary_isbn13) ? (
+                      <FaStar color='#5062F0' style={{cursor: 'pointer'}} size={16} onClick={() => handleFavoriteClick(item)} />
+                    ) : (
+                      <FaRegStar color='#5062F0' style={{cursor: 'pointer'}} size={16} onClick={() => handleFavoriteClick(item)} />
+                    )}
                   </S.AuthorContainer>
                 </S.TitleContainer>
                 <S.Description>{item.description}</S.Description>
