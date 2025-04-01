@@ -19,7 +19,6 @@ export const BooksWrapper = styled.div`
 
 export const BookContent = styled.div`
   align-items: center;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   margin-bottom: 3.2rem;
@@ -41,6 +40,7 @@ export const BookContent = styled.div`
 
 export const BookItem = styled.div`
   display: flex;
+  height: 16.7rem;
 `
 
 export const ImageContainer = styled.div`
@@ -55,3 +55,43 @@ export const ImageContainer = styled.div`
     object-fit: contain;
   }
 `;
+
+export const InfoContainer =  styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+`
+
+export const TitleContainer = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 0.4rem;
+`
+export const Title = styled.h1`
+  color: #0E1337;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 100%;
+`
+export const Author = styled.h2`
+  color: #454A67;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 100%;
+`
+export const Description = styled.p`
+  color: #0E1337;
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  line-height: 100%;
+`
+
+export const Text = styled.p`
+  color: #000000;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 100%;
+
+`

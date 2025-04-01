@@ -1,4 +1,5 @@
 import * as S from './bookColumnList.styles';
+import { FaStar, FaRegStar  } from 'react-icons/fa';
 
 export type BookDetails = {
   title: string;
@@ -34,7 +35,6 @@ interface BookColumnPropsList {
 }
 
 export default function BookColumnList({ items }: BookColumnPropsList) {
-  console.log('itemss: ', items, 'url: ', items[0].amazon_product_url);
   return (
     <S.BooksWrapper>
       {items?.map((bookList, index) => (
@@ -44,8 +44,16 @@ export default function BookColumnList({ items }: BookColumnPropsList) {
               <S.ImageContainer>
                 <img src="/images/mock_image.jpg" alt="Book Cover" />
               </S.ImageContainer>
-              <h1>{item.title}</h1>
-              <h1>{item.description}</h1>
+              <S.InfoContainer>
+                <S.TitleContainer>
+                  <S.Title>{item.title}</S.Title>
+                  <S.Author>{item.author}</S.Author>
+                  <FaRegStar size={16} />
+                </S.TitleContainer>
+              <S.Description>{item.description}</S.Description>
+              <S.Text>{item.publisher}</S.Text>
+              <S.Text>Rank</S.Text>
+              </S.InfoContainer>
             </S.BookItem>
           ))}
         </S.BookContent>
