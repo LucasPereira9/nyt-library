@@ -12,6 +12,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { Title } from "../page.styles";
 import { EmptyWrapper } from "./books.styles";
+import Loading from "@/components/Loading/Loading";
 
 export default function Books() {
   const searchParams = useSearchParams();
@@ -66,7 +67,7 @@ export default function Books() {
   if (isLoading) {
     return (
       <div>
-        <h1>carregando...</h1>
+        <Loading />
       </div>
     );
   }

@@ -9,6 +9,7 @@ import Pagination from '@/components/Pagination/pagination';
 import { usePaginatedResults, useTotalPages } from '@/utils/pagination';
 import GenderColumnList from '@/layout/GenderList/Column/genderColumnList';
 import GenderRowList from '@/layout/GenderList/Row/genderRowList';
+import Loading from '@/components/Loading/Loading';
 
 type GenderListProps = {
   list_name: string;
@@ -62,7 +63,7 @@ export default function Home() {
 
   const emptySearch = paginatedResults.length === 0
 
-  if (isLoading) return <p>Carregando...</p>;
+  if (isLoading) return <Loading />;
 
   return (
     <Style.Container>
