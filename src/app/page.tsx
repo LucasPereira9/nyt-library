@@ -60,6 +60,8 @@ export default function Home() {
     isPageOutOfRange
   );
 
+  const emptySearch = paginatedResults.length === 0
+
   if (isLoading) return <p>Carregando...</p>;
 
   return (
@@ -67,6 +69,10 @@ export default function Home() {
       <AppHeader value={search} setValue={setSearch} />
       <FilterBar Title="Gêneros" />
       <Style.Content>
+        {emptySearch && 
+        <div>
+          <Style.Title>Lista vazia.</Style.Title>  
+        </div>}
         {isColumn ? (
           <GenderColumnList items={paginatedResults} />
         ) : (

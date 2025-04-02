@@ -49,6 +49,8 @@ export default function BookRowList({ items }: BookRowPropsList) {
     }
   };
 
+  console.log({items})
+
 
   const handleButtonClick = (url: string) => {
     window.open(url ?? '', '_blank');
