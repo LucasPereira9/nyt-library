@@ -5,11 +5,11 @@ import React from "react";
 import { useRouter, usePathname } from 'next/navigation';
 
 type AppHeaderProps = {
-  onSearch: (query: string) => void;
+  value: string
+  setValue: (value: string) => void
 };
 
-export default function AppHeader({ onSearch }: AppHeaderProps) {
-  const [search, setSearch] = React.useState('');
+export default function AppHeader({ value, setValue }: AppHeaderProps) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -24,8 +24,8 @@ export default function AppHeader({ onSearch }: AppHeaderProps) {
     <Style.HeaderContainer>
       <Style.Title onClick={handleTitleClick}>Bloom Books</Style.Title>
       <SearchInput 
-        value={search} 
-        onChange={(e) => setSearch(e.target.value)} 
+        value={value} 
+        onChange={(e) => setValue(e.target.value)} 
         placeholder="Pesquise aqui..."
       />
       <SideMenu />

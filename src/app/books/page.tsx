@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 export default function Books() {
   const searchParams = useSearchParams();
   const gender = searchParams.get('gender');
+  const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const { data, isLoading } = useBestSellersListQuery(gender ?? '');
   const { itemsPerPage, layout } = useFilterStore();
@@ -23,17 +24,17 @@ export default function Books() {
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
   };
-  const totalPages = useTotalPages(data, itemsPerPage);
+  const totalPages = useTotalPages(data?.results, itemsPerPage);
   const isPageOutOfRange = totalPages < page;
   
     useEffect(() => {
       if (isPageOutOfRange) {
         setPage(1);
       }
-    }, [isPageOutOfRange, data]);
+    }, [isPageOutOfRange, data?.results]);
   
     const paginatedResults = usePaginatedResults<BookListProps>(
-      data,
+      data?.results,
       page,
       itemsPerPage,
       isPageOutOfRange
@@ -52,7 +53,7 @@ export default function Books() {
 
   return (
     <div>
-      <AppHeader onSearch={handleSearch} />
+      <AppHeader value={search} setValue={setSearch} />
       <FilterBar Title={data?.results[0]?.list_name} />
       {isColumn ?
       <BookColumnList items={paginatedResults} /> :
