@@ -67,7 +67,7 @@ export default function BookRowList({ items }: BookRowPropsList) {
                 <S.TitleContainer>
                   <S.Title>{item.title}</S.Title>
                   <S.AuthorContainer>
-                  <S.Author>{item.author}</S.Author>
+                  <S.Author>by {item.author}asdsad</S.Author>
                   {isFavorite(item.primary_isbn13) ? (
                       <FaStar color='#5062F0' style={{cursor: 'pointer'}} size={16} onClick={() => handleFavoriteClick(item)} />
                     ) : (
