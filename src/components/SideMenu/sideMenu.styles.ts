@@ -14,6 +14,7 @@ export const MenuContainer = styled.div<MenuContainerProps>`
   background-color: #fcfffa;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transform: translateX(150%);
+  overflow-y: auto;
   height: 90%;
   width: 26%;
   transition: transform 0.8s ease;

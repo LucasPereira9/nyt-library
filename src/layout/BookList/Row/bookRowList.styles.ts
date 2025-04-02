@@ -92,6 +92,9 @@ export const Author = styled.h2`
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 100%;
+  @media (max-width: 1024px) {
+    width: 80%;
+  }
 `
 
 export const Description = styled.p`
