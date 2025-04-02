@@ -39,7 +39,7 @@ export default function Home() {
     }
 
     const lowerSearch = search.toLowerCase();
-    return data.results.filter((item: any) =>
+    return data.results.filter((item: GenderListProps) =>
       item.display_name.toLowerCase().includes(lowerSearch)
     );
   }, [data?.results, search]);

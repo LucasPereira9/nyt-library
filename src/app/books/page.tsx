@@ -5,7 +5,7 @@ import FilterBar from "@/components/FilterBar/filterBar";
 import Pagination from "@/components/Pagination/pagination";
 import { useBestSellersListQuery } from "@/hooks/useBooksList";
 import { useFilterStore } from "@/hooks/useFilterStore";
-import BookColumnList, { BookListProps } from "@/layout/BookList/Column/bookColumnList";
+import BookColumnList, { BookDetails, BookListProps } from "@/layout/BookList/Column/bookColumnList";
 import BookRowList from "@/layout/BookList/Row/bookRowList";
 import { useTotalPages, usePaginatedResults } from "@/utils/pagination";
 import { useSearchParams } from 'next/navigation';
@@ -35,9 +35,9 @@ export default function Books() {
     }
 
     const lowerSearch = search.toLowerCase();
-    return data.results.filter((result: any) => {
+    return data.results.filter((result: BookListProps) => {
       if (result.book_details && result.book_details.length > 0) {
-        return result.book_details.some((book: any) =>
+        return result.book_details.some((book: BookDetails) =>
           book.title.toLowerCase().includes(lowerSearch)
         );
       }
