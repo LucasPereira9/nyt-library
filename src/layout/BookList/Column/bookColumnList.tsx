@@ -51,7 +51,6 @@ export default function BookColumnList({ items }: BookColumnPropsList) {
   const handleButtonClick = (url: string) => {
     window.open(url ?? '', '_blank');
   };
-  console.log('items:', items)
 
   return (
     <S.BooksWrapper>

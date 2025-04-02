@@ -49,7 +49,7 @@ export default function SideMenu() {
         </Style.EmptyContainer> : 
         favoriteBooks.map((item, index) => {
           return (
-            <Style.FavoriteContainer>
+            <Style.FavoriteContainer key={index}>
             <Style.ImageContainer>
                <img src="/images/empty_image.png" alt="Book Cover" />
              </Style.ImageContainer>

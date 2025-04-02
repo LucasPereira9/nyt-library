@@ -12,6 +12,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { Title } from "../page.styles";
 import { EmptyWrapper } from "./books.styles";
+import * as S from './books.styles'
 import Loading from "@/components/Loading/Loading";
 
 export default function Books() {
@@ -61,6 +62,10 @@ export default function Books() {
     itemsPerPage,
     isPageOutOfRange
   );
+  const RedirectToPortfolio = () => {
+    const portfolioUrl = 'https://master.d1vj8jvaw2xgu6.amplifyapp.com/pt'
+    window.open(portfolioUrl ?? '', '_blank');
+  };
   
   const emptySearch = paginatedResults.length === 0
 
@@ -78,7 +83,8 @@ export default function Books() {
       <FilterBar Title={data?.results && data.results[0]?.list_name} />
        {emptySearch && 
         <EmptyWrapper>
-          <Title>Lista vazia.</Title>  
+          <img height={160} width={180} src="/images/emptyList.png" alt="Book Cover" />
+          <Title>Nenhum resultado encontrado. Vamos tentar uma nova busca?</Title>  
         </EmptyWrapper>
         }
       {isColumn ? (
@@ -91,6 +97,9 @@ export default function Books() {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+      <S.FooterWrapper>
+        <S.HelpText onClick={RedirectToPortfolio}>Alguma dúvida? entre em contato conosco</S.HelpText>
+      </S.FooterWrapper>
     </div>
   );
 }

@@ -8,9 +8,9 @@ export const GendersWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
-  max-height: 38rem;
+  max-height: 36rem;
   @media (max-width: 768px) {
-    max-height: 32rem;
+    max-height: 30rem;
   }
 `;
 

@@ -7,12 +7,12 @@ export const GendersWrapper = styled.div`
   justify-content: flex-start;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 40rem;
+  max-height: 38rem;
   width: 100%;
   transform: translate(0);
   @media (max-width: 768px) {
     justify-content: flex-start;
-    max-height: 34rem;
+    max-height: 32rem;
   }
 `;
 

@@ -48,6 +48,11 @@ export default function Home() {
   const totalPages = useTotalPages(filteredData, itemsPerPage);
   const isPageOutOfRange = totalPages < page;
 
+  const RedirectToPortfolio = () => {
+    const portfolioUrl = 'https://master.d1vj8jvaw2xgu6.amplifyapp.com/pt'
+    window.open(portfolioUrl ?? '', '_blank');
+  };
+
   useEffect(() => {
     if (isPageOutOfRange) {
       setPage(1);
@@ -71,9 +76,11 @@ export default function Home() {
       <FilterBar Title="Gêneros" />
       <Style.Content>
         {emptySearch && 
-        <div>
-          <Style.Title>Lista vazia.</Style.Title>  
-        </div>}
+        <Style.EmptyWrapper>
+          <img height={160} width={180} src="/images/emptyList.png" alt="Book Cover" />
+          <Style.Title>Nenhum resultado encontrado. Vamos tentar uma nova busca?</Style.Title>  
+        </Style.EmptyWrapper>
+        }
         {isColumn ? (
           <GenderColumnList items={paginatedResults} />
         ) : (
@@ -85,6 +92,9 @@ export default function Home() {
           onPageChange={handlePageChange}
         />
       </Style.Content>
+      <Style.FooterWrapper>
+        <Style.HelpText onClick={RedirectToPortfolio}>Alguma dúvida? entre em contato conosco</Style.HelpText>
+      </Style.FooterWrapper>
     </Style.Container>
   );
 }
