@@ -51,7 +51,7 @@ export default function SideMenu() {
           return (
             <Style.FavoriteContainer>
             <Style.ImageContainer>
-               <img src="/images/mock_image.jpg" alt="Book Cover" />
+               <img src="/images/empty_image.png" alt="Book Cover" />
              </Style.ImageContainer>
              <Style.BookInfoWrapper>
               <Style.BookTitle>{item.title}</Style.BookTitle>

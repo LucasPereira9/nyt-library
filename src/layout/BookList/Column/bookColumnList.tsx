@@ -60,7 +60,7 @@ export default function BookColumnList({ items }: BookColumnPropsList) {
           {bookList.book_details.map((item, index) => (
             <S.BookItem onClick={() => console.log(item)} key={index}>
               <S.ImageContainer>
-                <img src="/images/mock_image.jpg" alt="Book Cover" />
+                <img src="/images/empty_image.png" alt="Book Cover" />
               </S.ImageContainer>
               <S.InfoContainer>
                 <S.TitleContainer>
