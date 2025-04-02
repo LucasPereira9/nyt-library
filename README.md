@@ -2,9 +2,9 @@
 **BLOOM BOOKS**  Explore new worlds, one genre at a time.
 
 <p align="center">
-  <a rel="noopener" target="_blank"><img width="150" src="/images/first_capture.jpg" alt="books_print1"></a>
-  <a rel="noopener" target="_blank"><img width="150" src="/images/second_capture.jpg" alt="books_print2"></a>
-  <a rel="noopener" target="_blank"><img width="150" src="/images/third_capture.jpg" alt="books_print3"></a>
+  <a rel="noopener" target="_blank"><img width="150" src="public/images/first_capture.jpg" alt="books_print1"></a>
+  <a rel="noopener" target="_blank"><img width="150" src="public/images/second_capture.jpg" alt="books_print2"></a>
+  <a rel="noopener" target="_blank"><img width="150" src="public/images/third_capture.jpg" alt="books_print3"></a>
 </p>
 
 ## Getting started
